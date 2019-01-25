@@ -24,7 +24,7 @@ public class HomeConroller extends HttpServlet {
 			request.setAttribute("user","emp");
 			request.setAttribute("compo","pre");
 		} else {
-			request.setAttribute("user","emp");
+			request.setAttribute("user", "emp");
 			request.setAttribute("compo","post");
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/home/main.jsp");
