@@ -18,8 +18,12 @@ public class HomeConroller extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		session.setAttribute("ctx", request.getContextPath());
+		session.setAttribute("css", session.getAttribute("ctx")+"/resources/css");
+		session.setAttribute("js", session.getAttribute("ctx")+"/resources/js");
 		session.setAttribute("context", request.getContextPath());
 		EmployeeDTO e = (EmployeeDTO)session.getAttribute("admin");
+		
 		if(e == null) {
 			request.setAttribute("user","emp");
 			request.setAttribute("compo","pre");
