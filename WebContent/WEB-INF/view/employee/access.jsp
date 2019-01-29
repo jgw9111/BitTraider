@@ -13,40 +13,39 @@
 		<section>
 			<article>
 				<h1 id="title">회원 전용 시스템</h1>
-				<table id="login-outer-tab">
-					<tr>
-						<td colspan="5">
-							<form id="login-form">
-
-								<table id="login-inner-tab">
-									<tr>
-										<td><input id="uid" name="uid" type="text"
-											placeholder="사원번호" tabindex="1" /></td>
-										<td rowspan="2">
-											<button id="login-btn">ACCESS</button>
-										</td>
-									</tr>
-									<tr>
-										<td><span>사원번호를 입력해주세요</span></td>
-									</tr>
-								</table>
-							</form>
-							<div>
-								<a id="admin-link" href="#"> 관리자 </a> | <a id="join-link"
-									href="#"> 회원가입 </a>
-							</div>
-						</td>
-					</tr>
-				</table>
+				  <form id="register_form" >
+			 		<div class="grid-container"> 
+				  <div class="grid-item" id="reg_item1">사원번호</div>
+				  <div class="grid-item" id="reg_item2"> 
+				    <input type="text" id="empno" name="empno" /> 
+				  </div>
+				  <div class="grid-item" id="reg_item3">이름</div>
+				  <div class="grid-item" id="reg_item4"> 
+				    <input type="text" id="name" name="name" /> 
+				  </div>
+				  <div class="grid-item" id="reg_item11">
+				    <input type="submit" id="confirm_btn" value="로그인" />
+				  </div>
+				  <div class="grid-item" id="reg_item12">
+				    <input type="submit" id="reset_btn" value="취소" />
+				  </div>
+				  </div>
+				  </form>
 			</article>
 		</section>
 	</div>
 </body>
 <script>
+	$('#confirm_btn').click(function(){
+		$('#register_form').attr('action','${ctx}/customer.do').submit();
+		
+	});
+
 	/* window.onload =  function(){
 	 location.assign('member.do?dest=join-form');
 	 } */
-	var submit = document.getElementById("login-btn");
+	 
+	/* var submit = document.getElementById("login-btn");
 	submit.addEventListener('click', function() {
 
 		var uid = document.getElementById("uid");
@@ -63,12 +62,12 @@
 			form.submit();
 		}
 
-	});
+	}); */
 
-	document.getElementById('join-link').addEventListener('click', function() {
+	/* document.getElementById('join-link').addEventListener('click', function() {
 		alert('회원가입 클릭');
 		location.assign('member.do?dest=join-form');
-	});
+	}); */
 	// move 이면 클릭이벤트가 리스닝 
 	// move()이면 즉시실행됨
 	// 'click',function(){} 하면 콜백함수가 호출된다.

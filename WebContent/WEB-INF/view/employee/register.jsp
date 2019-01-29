@@ -1,129 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<style>
 
-.grid-container{
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-}
-.grid-item{
-   text-align: center;
-}
-#reg_item1{
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-#reg_item2{
-  grid-column-start: 3;
-  grid-column-end: 5;
-}
-#reg_item3{
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-#reg_item4{
-  grid-column-start: 3;
-  grid-column-end: 5;
-}
-#reg_item5{
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-#reg_item6{
-  grid-column-start: 3;
-  grid-column-end: 5;
-}
-#reg_item7{
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-#reg_item8{
-  grid-column-start: 3;
-  grid-column-end: 5;
-}
-#reg_item9{
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-#reg_item10{
-  grid-column-start: 3;
-  grid-column-end: 5;
-}
-#reg_item11{
-  grid-column-start: 1;
-  grid-column-end: 3;
 
-}
-#reg_item12{
-  grid-column-start: 3;
-  grid-column-end: 5;
-}
-#register-form input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-#register-form input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-#register-form input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-#register-form div {
-  border-radius: 5px;
-  padding: 10px;
-}
-</style>
-</head>
 <body>
 
 <div id="register-form">
-<form action="employee.do">
+<form id="register_form" >
 <div class="grid-container">
 
   <div class="grid-item" id="reg_item1">
   사원번호
   </div>
   <div class="grid-item" id="reg_item2"> 
-    <input type="text" name="employeeid" /> 
+    <input type="text" id="empno" name="empno" /> 
   </div>
   <div class="grid-item" id="reg_item3">
   이름
   </div>
   <div class="grid-item" id="reg_item4"> 
-    <input type="text" name="name" /> 
+    <input type="text" id="name" name="name" /> 
   </div>
   <div class="grid-item" id="reg_item5">
   매니저
   </div>
   <div class="grid-item" id="reg_item6">
-    <input type="text" name="manager" />
+    <input type="text" id="manager" name="manager" />
   </div>
   <div class="grid-item" id="reg_item7">
   생년월일
   </div>
   <div class="grid-item" id="reg_item8">
-    <input type="text"  name="birthDate" />
+    <input type="text" id="birthDate" name="birthDate" />
   </div>
   <div class="grid-item" id="reg_item9">
   비고
   </div>
   <div class="grid-item" id="reg_item10">
-    <input type="text" name="notes" />
+    <input type="text" id="desc" name="notes" />
   </div>
   <div class="grid-item" id="reg_item11">
     <input type="submit" id="confirm_btn" value="사원등록" />
@@ -149,10 +62,28 @@
   
 <script>
 $('#confirm_btn').click(function(){
-	alert('확인버튼 클릭!!');
+	var empno = $('#empno').val();
+	var name = $('#name').val();
+	var manager = $('#manager').val();
+	var birthDate = $('#birthDate').val();
+	var desc = $('#desc').val();
+	$('#register_form').
+	attr('action','${ctx}/employee.do').submit();
+	
+	/* if(empno === '' || name ==='' || manager==='' || birthDate==='' ){
+		alert('필수 입력값입니다.');
+		//alert('사번 : '+empno + '이름 : '+name + '매니저 : ' + manager + '생일 : '+ birthDate);
+	}else{
+		//var from = $('#register_form');
+		//document.form.action = "${ctx}/employee.do"; j-s 방식
+		$('#register_form').
+		attr('action','${ctx}/employee.do').submit(); // 제이쿼리
+	} */
 });
 $('#reset_btn').click(function(){
 	alert('취소버튼 클릭');
 });
+
+
 </script>  
 </body>
